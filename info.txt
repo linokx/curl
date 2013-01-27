@@ -1,0 +1,105 @@
+$resultat = curl_exec($url);
+$dom = new DOMDocument();
+@$dom->loadHTML($html);
+$nodes = $dom->getElementsByTagName('title');
+
+echo $nodes->item(0)->nodeValue;
+
+$nodes = $dom->getElementsByTagName('meta');
+
+foreach($nodes as $node):
+	if(strtolower($node->getAttribute('name')) == 'descritption')
+	{
+		echo $node->getAttribute('content');
+	}
+endforeach;
+
+$nodes = $dom->getElementsByTagName('img');
+
+foreach($nodes as $node):
+	$src = $node->getAttribute('src');
+	//$node_url = preg_replace('#^[^http(?:s?)]/*(.*)$#', $url.'/'.$src, $src));
+	$node_url = rel2abs($src,$url);
+	echo '<img src="'.$node_url.'"/>';
+endforeach;
+
+//http://stackoverflow.com/questions/5653859
+function rel2abs($rel, $base)
+{
+    /* return if already absolute URL */
+    if (parse_url($rel, PHP_URL_SCHEME) != '') return $rel;
+   
+    /* queries and anchors */
+    if ($rel[0]=='#' || $rel[0]=='?') return $base.$rel;
+   
+    /* parse base URL and convert to local variables:
+       $scheme, $host, $path */
+    extract(parse_url($base));
+ 
+    /* remove non-directory element from path */
+    $path = preg_replace('#/[^/]*$#', '', $path);
+ 
+    /* destroy path if relative url points to root */
+    if ($rel[0] == '/') $path = '';
+   
+    /* dirty absolute URL */
+    $abs = "$host$path/$rel";
+ 
+    /* replace '//' or '/./' or '/foo/../' with '/' */
+    $re = array('#(/\.?/)#', '#/(?!\.\.)[^/]+/\.\./#');
+    for($n=1; $n>0; $abs=preg_replace($re, '/', $abs, -1, $n)) {}
+   
+    /* absolute URL is ready! */
+    return $scheme.'://'.$abs;
+}
+
+
+
+/*------ loaders -----*/
+
+-Config/dataload.php
+	$..autoload = array('url');
+
+-Controller.php
+	- Construct
+		$this->load->library('url');
+	- Autre
+		$this->load->library('url');
+		
+		
+		
+/*----- supprimer -----*/
+
+<a href="liens/delete/id">Supprimer</a>
+
+function delete($it){
+	$this->model_name->delete($it);
+}
+
+Model
+function delete($id){
+	$this->DB->delete($id);
+	if($this->input->is_ajax_req()){
+		echo 'lien supprimé';
+	}
+	else
+	{
+		$data['vue']='ok';
+		$this->load->view('ok');
+	}
+}
+
+Ajax
+$(function(){
+	$('.delete').on('click',function(event){
+		event.preventDefault();
+		var href=$(this).attr('href');
+		var $this = $(this);
+		$.ajax({
+			url: href,
+			success:function(data){
+				$this.parent().text(data).fadeOut(5000);
+			}
+		});
+	});
+});
