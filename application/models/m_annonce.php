@@ -6,6 +6,7 @@
 			$this->db->select('*');
 			$this->db->from('annonces');
 			$this->db->where('id_membre',$id);
+			$this->db->where('statut',1);
 			$this->db->order_by("date", "desc");
 			
 			$query = $this->db->get();
@@ -22,12 +23,12 @@
 				'resume' => $data['resume'],
 				'photo' => $data['image'],
 				'DBimage' => $data['DBimage'],
-				'statut' => 'non_lu'
+				'statut' => '1'
 				);
 			$this->db->insert('annonces', $info); 
 		}
 		public function supprimer($id){
-			$this->db->delete('annonces',array('id' => $id));
+			$this->db->update('annonces',array('statut' => 0));
 			if($this->input->is_ajax_request()){
 				echo 'Suppression en cours...';
 			}

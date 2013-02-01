@@ -2,7 +2,7 @@
 <div id="form">
 	<form method="post" action="<?php echo site_url(); ?>index.php/annonce/ajouter">
 	<?php $Purl = (isset($Surl))? $Surl : ''; ?>
-		<label for="url">http://</label><input type="text" name="url" id="url" value="<?php echo $Purl; ?>"/><input type="submit" value="Analyser" />
+		<label>http://<input type="text" name="url" id="url" required="required" value="<?php echo $Purl; ?>"/></label><input type="submit" value="Analyser" />
 		<img id="loader" style="display:none" height="40px" src="<?php echo site_url().IMG_DIR;?>/loader.gif" />
 	</form>
 </div>
@@ -29,7 +29,7 @@
 				echo '<li><img src="'.$img.'" /></li>';
 			endfor;*/
 			foreach($image as $img):
-				echo '<li ><img src="'.$img.'"/></li>';
+				echo '<li ><img src="'.$img.'" width="160" height="160"/></li>';
 			endforeach;
 			?>
 		</ul>
@@ -94,10 +94,10 @@
 						<?php echo $annonce->titre; ?>
 					</a>
 					</h2>
-					<div class="slider">
-						<img src="<?php echo $annonce->photo; ?>" />
-					</div>
-					<p><?php echo  $annonce->resume; ?></p>
+					
+					<p><span class="slider">
+						<img src="<?php echo $annonce->photo; ?>" width="160" height="160" alt="<?php echo $annonce->titre; ?>" />
+					</span><?php echo  $annonce->resume; ?></p>
 					</div>
 					<div class="lien">
 						<span class="icon-cog-alt"> Paramètres</span>

@@ -210,11 +210,22 @@ h3 {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   margin-bottom: 2em;
 }
+#form form {
+  position: relative;
+}
 #form label {
+  background: #FFF;
+  border: 1px #999 solid;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2) inset;
+  display: block;
+  margin-right: 116px;
+  padding: 0 7px;
   font-weight: bold;
   line-height: 40px;
 }
 #form input[type=text] {
+  background: none;
+  border: none;
   width: 40%;
   -margin-right: 50px;
   font-size: 20px;
@@ -235,27 +246,26 @@ h3 {
   color: white;
   font-weight: bold;
   margin: 0;
-  padding: 10px 30px;
+  padding: 12px 30px;
+  position: absolute;
+  right: 0;
   text-align: center;
   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.4);
+  top: 0;
 }
-@media only screen and (max-width: 860px) {
+@media only screen and (max-width: 680px) {
   #form {
     padding: 10px;
   }
-  #form input[type=text] {
-    border: 1px #777 solid;
-    border-radius: 3px;
+  #form label {
     display: block;
-    margin-bottom: 10px;
-    width: 99%;
+    margin-right: 0;
   }
   #form input[type=submit] {
-    border: 1px #777 solid;
+    border-left: 1px grey solid;
     border-radius: 3px;
-    display: block;
-    padding: 10px 0;
-    text-align: center;
+    margin-top: 10px;
+    position: relative;
     width: 100%;
   }
 }
@@ -499,6 +509,8 @@ h3 {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   display: inline-block;
   height: 150px;
+  float: left;
+  margin-right: 20px;
   overflow: hidden;
   width: 150px;
 }
@@ -506,7 +518,7 @@ h3 {
   border: 1px #DDD solid;
   height: 100%;
 }
-@media only screen and (max-width: 860px) {
+@media only screen and (max-width: 560px) {
   .slider {
     height: 90px;
     width: 90px;
@@ -515,19 +527,12 @@ h3 {
 /*--------------RESULTAT------------------*/
 .resultat textarea,
 .resultat p {
-  background-color: white;
   border: none;
   display: inline-block;
   font-size: 16px;
-  height: 140px;
-  margin-left: 30px;
+  min-height: 140px;
   margin-top: 0;
   overflow: hidden;
-  padding: 10px;
-  width: 540px;
-}
-.resultat p {
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 .apercu form {
   display: block;
@@ -644,7 +649,5 @@ h3 {
     margin-left: 0;
     margin-top: 10px;
     min-height: 90px;
-    padding: 2%;
-    width: 96%;
   }
 }

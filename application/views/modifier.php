@@ -14,7 +14,7 @@
 			$images = explode(';',$DBimage);
 			foreach($images as $img):
 				$class = ($img == $photo) ? "class='choix'" : '';
-				echo '<li '.$class.' ><img src="'.$img.'"/></li>';
+				echo '<li '.$class.' ><img src="'.$img.'" width="160" height="160"/></li>';
 			endforeach;
 			?>
 		</ul>

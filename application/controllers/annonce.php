@@ -37,7 +37,8 @@ class Annonce extends CI_Controller {
 		$this->load->helper('form');
 		$url = $this->input->post('url');
 		$data['annonces'] = $this->M_Annonce->lister($id);
-		$data['Surl'] = $url;
+		$data['Surl'] = str_replace('http://','',$url);
+		$data['Surl'] = str_replace('https://','',$data['Surl']);
 		$data['url']= 'http://'.$url;
 		if($url != null):
 			
@@ -68,7 +69,7 @@ class Annonce extends CI_Controller {
 					$imagesChoix = array();
 					foreach($nodes as $node):
 						$node_url = $node->getAttribute('src');
-						$node_url = $this->rel2abs($url,$node_url);
+						$node_url = $this->rel2abs($data['Surl'],$node_url);
 						if(substr($node_url, 0, 4) == 'http'){
 							$taille = getimagesize($node_url);
 							if($taille[0] > 70)
