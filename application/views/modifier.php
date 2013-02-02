@@ -1,7 +1,8 @@
 <a href="<?php echo site_url().'index.php/member/logout'; ?>" id="logout">Deconnexion</a>
 	<div class="apercu">
-		<h2><a title="Visiter la page de <?php echo $titre; ?>" href="<?php echo $url; ?>"><?php echo $titre; ?></a></h2>
-		<h3>Cliquer sur l'image qui servira d'apercu <span style="font-size:12px">(L'image ne sera pas deformée lors de l'apercu)</span></h3>
+		<h2><?php echo $titre; ?></h2>
+		<a class="site" title="Visiter la page de <?php echo $titre; ?>" href="<?php echo $url; ?>"><?php echo $url; ?></a>
+		<label>Cliquer sur l'image qui servira d'apercu <span>(L'image ne sera pas deformée lors de l'apercu)</span></label>
 		
 			<div class="slider">
 			<ul>
@@ -19,7 +20,7 @@
 			?>
 		</ul>
 		</div>
-		<h3>Vous pouvez modifier la description</h3>
+		<label>Vous pouvez modifier la description</label>
 		<?php 
 		echo form_open('index.php/annonce/modifier',array('method'=>'post'));
 		?>

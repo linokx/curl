@@ -17,6 +17,19 @@ $(function(){
                 }
               });
           });
+          $(".retablir").on('click',function(event){
+              event.preventDefault();
+              var href=$(this).attr('href');
+              var $this = $(this);
+              $(this).parent().parent().parent().slideUp();
+             $.ajax({
+                url: href,
+                success:function(){
+                  $hauteur = $this.parent().prev().height();
+                  $this.parent().prev().css('height',$hauteur).text("Lien rétabli").parent().delay(1500).slideUp(1000);
+                }
+              });
+          });
       $image = $('input[name="fImage"]');
       $(".apercu li").on('click',function(event){
       $(this).parent().children().removeClass('choix');

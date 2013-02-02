@@ -235,10 +235,11 @@ h3 {
   padding: 0;
 }
 #form input[type=submit] {
-  background: #4c61ff;
-  background: -moz-linear-gradient(top, #9cf66f, #50a905);
-  background: -webkit-gradient(linear, center top, center bottom, from(#9cf66f), to(#50a905));
-  background: -o-linear-gradient(top, #9cf66f, #50a905);
+  background: #50a905;
+  background: -moz-linear-gradient(top, #9cf66f 0%, #50a905 100%);
+  background: -webkit-linear-gradient(top, #9cf66f 0%, #50a905 100%);
+  background: -ms-radial-gradient(center top, #9cf66f 0%, #50a905 100%);
+  background: -o-radial-gradient(center top, #9cf66f 0%, #50a905 100%);
   border: 1px grey solid;
   border-left: none;
   border-radius: 0 3px 3px 0;
@@ -286,10 +287,11 @@ h3 {
   width: 30em;
 }
 #connect div {
-  background: #4c61ff;
-  background: -moz-linear-gradient(top, #4c61ff, #0004a5);
-  background: -webkit-gradient(linear, center top, center bottom, from(#4c61ff), to(#0004a5));
-  background: -o-linear-gradient(top, #4c61ff, #0004a5);
+  background: #0004a5;
+  background: -moz-linear-gradient(top, #4c61ff 0%, #0004a5 100%);
+  background: -webkit-linear-gradient(top, #4c61ff 0%, #0004a5 100%);
+  background: -ms-radial-gradient(center top, #4c61ff 0%, #0004a5 100%);
+  background: -o-radial-gradient(center top, #4c61ff 0%, #0004a5 100%);
   border: 1px #2532D1 solid;
   border-radius: 3px;
   box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.2);
@@ -299,9 +301,11 @@ h3 {
   padding: 6px 5px;
 }
 #connect label {
-  background: #CCC;
+  background: #cccccc;
   background: -moz-linear-gradient(top, #ffffff 30%, #cccccc 80%);
-  background: -webkit-gradient(linear, center top, center bottom, from(#ffffff), to(#eeeeee));
+  background: -webkit-linear-gradient(top, #ffffff 30%, #cccccc 80%);
+  background: -ms-radial-gradient(center top, #ffffff 30%, #cccccc 80%);
+  background: -o-radial-gradient(center top, #ffffff 30%, #cccccc 80%);
   border: 1px #999 solid;
   border-right: none;
   border-radius: 3px 0 0 3px;
@@ -333,10 +337,11 @@ h3 {
   z-index: 100;
 }
 #connect input[type=submit] {
-  background: #4c61ff;
-  background: -moz-linear-gradient(top, #9cf66f, #50a905);
-  background: -webkit-gradient(linear, center top, center bottom, from(#9cf66f), to(#50a905));
-  background: -o-linear-gradient(top, #9cf66f, #50a905);
+  background: #50a905;
+  background: -moz-linear-gradient(top, #9cf66f 0%, #50a905 100%);
+  background: -webkit-linear-gradient(top, #9cf66f 0%, #50a905 100%);
+  background: -ms-radial-gradient(center top, #9cf66f 0%, #50a905 100%);
+  background: -o-radial-gradient(center top, #9cf66f 0%, #50a905 100%);
   border: 1px #50A905 solid;
   border-radius: 3px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -429,12 +434,15 @@ h3 {
   z-index: 5000;
 }
 .bloc .lien span {
-  background: #FFF;
-  background: -webkit-gradient(linear, center top, center bottom, from(#ffffff), to(#cccccc));
+  background: #cccccc;
+  background: -moz-linear-gradient(top, #ffffff 0%, #cccccc 100%);
+  background: -webkit-linear-gradient(top, #ffffff 0%, #cccccc 100%);
+  background: -ms-radial-gradient(center top, #ffffff 0%, #cccccc 100%);
+  background: -o-radial-gradient(center top, #ffffff 0%, #cccccc 100%);
   border: 1px #AAA solid;
   border-radius: 3px;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
-  display: block;
+  display: inline-block;
   padding: 10px;
   z-index: 200;
 }
@@ -479,6 +487,10 @@ h3 {
   z-index: 50;
   position: relative;
 }
+.resultat h2,
+.apercu h2 {
+  margin-bottom: 0;
+}
 @media only screen and (max-width: 860px) {
   .bloc .lien {
     right: 10px;
@@ -496,10 +508,10 @@ h3 {
     margin: 0 0 10px;
   }
   .bloc .lien div {
-    margin-left: -89px;
+    margin-left: -185px;
     padding: 3px 5px;
     position: absolute;
-    width: 115px;
+    width: 211px;
   }
 }
 /*--------------SLIDER-------------*/
@@ -528,11 +540,19 @@ h3 {
 .resultat textarea,
 .resultat p {
   border: none;
-  display: inline-block;
+  display: block;
   font-size: 16px;
   min-height: 140px;
   margin-top: 0;
   overflow: hidden;
+}
+.apercu label {
+  clear: both;
+  display: block;
+  margin-bottom: 1em;
+}
+.apercu label span {
+  font-size: 12px;
 }
 .apercu form {
   display: block;
@@ -567,12 +587,13 @@ h3 {
   margin-left: 20px;
 }
 .apercu li {
-  padding: 5px;
+  background: #FFF;
   box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.3);
-  float: none;
   display: inline-block;
-  width: auto;
+  float: none;
   height: auto;
+  padding: 5px;
+  width: auto;
 }
 .apercu li:hover,
 .apercu li.choix {
@@ -585,7 +606,8 @@ h3 {
 }
 @media only screen and (max-width: 700px) {
   .apercu li {
-    display: block;
+    margin-right: 0.5em;
+    margin-bottom: 0.5em;
   }
   .apercu li ~ li {
     margin-left: 0;
@@ -650,4 +672,28 @@ h3 {
     margin-top: 10px;
     min-height: 90px;
   }
+}
+a.site {
+  display: inline-block;
+  font-size: 14px;
+  margin-bottom: 2em;
+  text-decoration: underline;
+}
+/*------------------ CORBEILLE ---------------*/
+#corbeille_link {
+  background: #aaaaaa;
+  background: -moz-linear-gradient(top, #ffffff 0%, #aaaaaa 80%);
+  background: -webkit-linear-gradient(top, #ffffff 0%, #aaaaaa 80%);
+  background: -ms-radial-gradient(center top, #ffffff 0%, #aaaaaa 80%);
+  background: -o-radial-gradient(center top, #ffffff 0%, #aaaaaa 80%);
+  border-radius: 5px 5px 0 0;
+  bottom: 0;
+  box-shadow: -1px -1px 4px 2px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  position: fixed;
+  right: 20px;
+  z-index: 500;
+}
+#corbeille .resultat {
+  opacity: 0.5;
 }

@@ -90,11 +90,9 @@
 				?>
 				<div class="bloc">
 				<div class="resultat">
-					<h2><a title="Visiter la page de <?php echo $annonce->titre;?>" href="<?php echo $annonce->url; ?>">
-						<?php echo $annonce->titre; ?>
-					</a>
-					</h2>
 					
+					<h2><?php echo $annonce->titre; ?></h2>
+					<a class="site" title="Visiter la page de <?php echo $annonce->titre; ?>" href="<?php echo $annonce->url; ?>"><?php echo $annonce->url; ?></a>
 					<p><span class="slider">
 						<img src="<?php echo $annonce->photo; ?>" width="160" height="160" alt="<?php echo $annonce->titre; ?>" />
 					</span><?php echo  $annonce->resume; ?></p>
@@ -102,8 +100,8 @@
 					<div class="lien">
 						<span class="icon-cog-alt"> Paramètres</span>
 						<div>
-							<a class="update icon-pencil" href="<?php echo 'annonce/modifier/'.$annonce->id; ?>"> Modifier</a>
-							<a class="delete icon-trash" href="<?php echo 'annonce/effacer/'.$annonce->id; ?>"> Supprimer</a>
+							<a class="update icon-pencil" href="<?php echo 'annonce/modifier/'.$annonce->id; ?>"> Modifier l'annonce</a>
+							<a class="delete icon-trash" href="<?php echo 'annonce/deplacer/'.$annonce->id; ?>"> Placer dans la corbeille</a>
 						</div>
 					</div>
 				</div>
@@ -111,3 +109,4 @@
 			endforeach;
 		endif;
 	?>
+	<div id="corbeille_link"><a href="annonce/corbeille" title="Gérer les annonces supprimées">Corbeille</a></div>

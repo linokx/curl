@@ -12,6 +12,17 @@
 			$query = $this->db->get();
 			return $query->result();
 		}
+		public function corbeille($id)
+		{
+			$this->db->select('*');
+			$this->db->from('annonces');
+			$this->db->where('id_membre',$id);
+			$this->db->where('statut',0);
+			$this->db->order_by("date", "desc");
+			
+			$query = $this->db->get();
+			return $query->result();
+		}
 		public function ajouter($data)
 		{
 			$info = array(
@@ -27,14 +38,38 @@
 				);
 			$this->db->insert('annonces', $info); 
 		}
-		public function supprimer($id){
+		public function deplacer($id){
+			$this->db->where('id',$id);
 			$this->db->update('annonces',array('statut' => 0));
+			if($this->input->is_ajax_request()){
+				echo 'L\'annonce en train d\'être placé dans la corbeille...';
+			}
+			else
+			{
+				echo 'L\'annonce en train d\'être placé dans la corbeille...';
+			}
+
+		}
+		public function supprimer($id){
+			$this->db->delete('annonces',array('id'=>$id));
 			if($this->input->is_ajax_request()){
 				echo 'Suppression en cours...';
 			}
 			else
 			{
 				echo 'Suppression en cours...';
+			}
+
+		}
+		public function retablir($id){
+			$this->db->where('id',$id);
+			$this->db->update('annonces',array('statut' => 1));
+			if($this->input->is_ajax_request()){
+				echo 'Rétablissement de l\'annonce...';
+			}
+			else
+			{
+				echo 'Rétablissement de l\'annonce...';
 			}
 
 		}

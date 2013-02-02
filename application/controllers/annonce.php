@@ -29,6 +29,21 @@ class Annonce extends CI_Controller {
 		
 		$this->load->view('layout',$data);
 	}
+	public function corbeille(){
+		$id = $this->session->userdata('logged_in')->membre_id;
+
+		$this->load->helper('form');
+		$this->session->set_flashdata('current_url',current_url());
+		$this->load->model('M_Annonce');
+		$data['annonces'] = $this->M_Annonce->corbeille($id);
+		$data['subtitle'] = "Corbeille";
+
+		$data['vue'] = $this->load->view('corbeille',$data,true);
+		
+		$data['main_title'] = 'Corbeille';
+		
+		$this->load->view('layout',$data);
+	}
 	public function ajouter()
 	{
 		$id = $this->session->userdata('logged_in')->membre_id;
@@ -121,6 +136,16 @@ class Annonce extends CI_Controller {
 		$this->load->model('M_Annonce');
 		$this->M_Annonce->ajouter($data);
 		redirect('index.php/annonce');
+	}
+	public function deplacer(){
+		$id = $this->uri->segment(3);
+		$this->load->model('M_Annonce');
+		$this->M_Annonce->deplacer($id);
+	}
+	public function retablir(){
+		$id = $this->uri->segment(3);
+		$this->load->model('M_Annonce');
+		$this->M_Annonce->retablir($id);
 	}
 	public function effacer(){
 		$id = $this->uri->segment(3);
